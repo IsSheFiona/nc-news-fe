@@ -1,15 +1,16 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
+import ArticleSorter from "./ArticleSorter";
 
 class Articles extends React.Component {
   state = {
     articles: []
   };
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
+        <ArticleSorter />
         <ul>
           {this.state.articles.map(article => {
             return (
