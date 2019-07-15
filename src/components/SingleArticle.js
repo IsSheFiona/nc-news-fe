@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
+import Comments from "./Comments";
 
 class SingleArticle extends React.Component {
   state = {
@@ -17,6 +18,7 @@ class SingleArticle extends React.Component {
         <p>Votes{":  " + this.state.singleArticle.votes}</p>
         <Link to={`/articles/${this.state.singleArticle.article_id}/comments`}>
           <p>Comments{":  " + this.state.singleArticle.comment_count}</p>
+          <Comments article_id={this.state.article_id} />
         </Link>
       </React.Fragment>
     );
