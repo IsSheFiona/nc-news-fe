@@ -29,17 +29,39 @@ code {
 nav {
   width: 100vw;
   background-color: #ffefd5;
-  color: #8b475d;
   display: flex;
   margin: 2 2vw;
   justify-content: space-around;
-  text-decoration: none;
 }
 
 h2 {
   margin: 20px;
+  color: #8b475d;
 }
 
 .articleSorter {
   margin: 20px;
+}
+
+a:link {
+  text-decoration: none;
+  color: #8b475d;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #8b475d;
+}
+
+li {
+  list-style-type: none;
+  margin-right: 40px;
+}
+
+li:nth-child(odd) {
+  background: #eecbad;
+}
+
+li:nth-child(even) {
+  background: #ffefd5;
 }
