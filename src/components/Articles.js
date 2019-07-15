@@ -7,22 +7,23 @@ class Articles extends React.Component {
     articles: []
   };
   render() {
+    console.log(this.props);
     return (
       <React.Fragment>
         <ul>
           {this.state.articles.map(article => {
             return (
-              <li>
-                <Link to={`../articles/${article.article_id}`}>
+              <li key={article.article_id}>
+                <Link to={`/articles/${article.article_id}`}>
                   <h3>{article.title}</h3>
                 </Link>
-                <Link to={`../${article.topic}`}>
-                  <h4>Topic ~~{article.topic}</h4>
+                <Link to={`/topics/${article.topic}`}>
+                  <h4>Topic{":  " + article.topic}</h4>
                 </Link>
-                <p>Author ~~{article.author}</p>{" "}
-                <p>Date Created ~~{article.created_at}</p>{" "}
-                <p>Comments ~~{article.comment_count}</p>{" "}
-                <p>Votes ~~{article.votes}</p>
+                <p>Author{":  " + article.author}</p>{" "}
+                <p>Date Added{":  " + article.created_at}</p>{" "}
+                <p>Comments{":  " + article.comment_count}</p>{" "}
+                <p>Votes{":  " + article.votes}</p>
               </li>
             );
           })}
@@ -31,10 +32,10 @@ class Articles extends React.Component {
     );
   }
 
-  fetchArticles = () => {
+  fetchArticles = topic => {
     const url = "https://fionas-nc-news.herokuapp.com/api/articles";
     axios
-      .get(url)
+      .get(url, { params: { topic: topic } })
       .then(({ data }) => {
         this.setState({
           articles: data.articles
@@ -46,8 +47,16 @@ class Articles extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchArticles();
+    if (this.props.topic) {
+      this.fetchArticles(this.props.topic);
+    } else this.fetchArticles();
   }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps !== this.props) {
+      this.fetchArticles(this.props.topic);
+    }
+  };
 }
 
 export default Articles;

@@ -8,13 +8,13 @@ function Nav() {
         <Link to="/home">
           <h3>Home</h3>
         </Link>
-        <Link to="/coding">
+        <Link to="/topics/coding">
           <h3>Coding</h3>
         </Link>
-        <Link to="/football">
+        <Link to="/topics/football">
           <h3>Football</h3>
         </Link>
-        <Link to="/cooking">
+        <Link to="/topics/cooking">
           <h3>Cooking</h3>
         </Link>
       </nav>
