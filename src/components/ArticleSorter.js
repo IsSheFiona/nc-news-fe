@@ -1,14 +1,17 @@
 import React from "react";
 
-function ArticleSorter() {
+function ArticleSorter(props) {
   return (
-    <form className="articleSorter" onChange={() => {}}>
+    <form
+      className="articleSorter"
+      onChange={e => props.fetchArticles({ sort_by: e.target.value })}
+    >
       <label>
         Sort Articles By:{" "}
         <select>
-          <option>Date</option>
-          <option>Comment Count</option>
-          <option>Votes</option>
+          <option value="created_at">Date</option>
+          <option value="comment_count">Comment Count</option>
+          <option value="votes">Votes</option>
         </select>
       </label>
     </form>
