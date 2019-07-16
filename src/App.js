@@ -8,26 +8,33 @@ import Nav from "./components/Nav";
 import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
 
-function App() {
-  return (
-    <React.Fragment>
-      <header>
-        <h2>
-          nc newsbot...{"  "}
-          <FontAwesomeIcon icon={faRobot} />
-        </h2>
-        <Nav />
-      </header>
-      <body>
+class App extends React.Component {
+  state = {
+    loggedInUser: "grumpy19"
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <header>
+          <h2>
+            nc newsbot...{"  "}
+            <FontAwesomeIcon icon={faRobot} />
+          </h2>
+          <Nav />
+        </header>
+
         <Router>
           <Articles path="/home" />
           <Articles path="topics/:topic" />
           <SingleArticle path="/articles/:article_id" />
-          <Comments path="/articles/:article_id/comments" />
+          <Comments
+            path="/articles/:article_id/comments"
+            loggedInUser={this.state.loggedInUser}
+          />
         </Router>
-      </body>
-    </React.Fragment>
-  );
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
