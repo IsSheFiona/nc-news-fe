@@ -8,8 +8,7 @@ class SingleArticle extends React.Component {
   state = {
     singleArticle: {},
     isLoading: true,
-    err: null,
-    loggedInUser: "grumpy19"
+    err: null
   };
   render() {
     if (this.state.err) {

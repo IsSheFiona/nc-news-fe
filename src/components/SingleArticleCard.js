@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 import Comments from "./Comments";
 
 function SingleArticleCard(props) {
+  console.log(props);
   return (
     <React.Fragment>
       <h3>{props.singleArticle.title}</h3>
