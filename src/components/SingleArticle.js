@@ -2,13 +2,21 @@ import React from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
 import Comments from "./Comments";
+import ErrorHandler from "./ErrorHandler";
+import LoadingPage from "./LoadingPage";
 
 class SingleArticle extends React.Component {
   state = {
-    singleArticle: {}
+    singleArticle: {},
+    isLoading: true,
+    err: null,
+    loggedInUser: "grumpy19"
   };
   render() {
-    console.log(this.state);
+    if (this.state.err) {
+      return <ErrorHandler err={this.state.err} />;
+    }
+    if (this.state.isLoading) return <LoadingPage />;
     return (
       <React.Fragment>
         <h3>{this.state.singleArticle.title}</h3>
@@ -32,11 +40,12 @@ class SingleArticle extends React.Component {
       .get(url)
       .then(({ data }) => {
         this.setState({
-          singleArticle: data.article
+          singleArticle: data.article,
+          isLoading: false
         });
       })
       .catch(err => {
-        this.setState({ err });
+        this.setState({ err, isLoading: false });
       });
   };
 
