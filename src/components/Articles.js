@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "@reach/router";
 import ArticleSorter from "./ArticleSorter";
 import ErrorHandler from "./ErrorHandler";
 import LoadingPage from "./LoadingPage";
+import ArticleList from "./ArticleList";
 
 class Articles extends React.Component {
   state = {
@@ -19,24 +19,7 @@ class Articles extends React.Component {
     return (
       <React.Fragment>
         <ArticleSorter fetchArticles={this.fetchArticles} />
-        <ul>
-          {this.state.articles.map(article => {
-            return (
-              <li key={article.article_id}>
-                <Link to={`/articles/${article.article_id}`}>
-                  <h3>{article.title}</h3>
-                </Link>
-                <Link to={`/topics/${article.topic}`}>
-                  <h4>Topic{":  " + article.topic}</h4>
-                </Link>
-                <p>Author{":  " + article.author}</p>{" "}
-                <p>Date Added{":  " + article.created_at}</p>{" "}
-                <p>Comments{":  " + article.comment_count}</p>{" "}
-                <p>Votes{":  " + article.votes}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <ArticleList articles={this.state.articles} />
       </React.Fragment>
     );
   }
