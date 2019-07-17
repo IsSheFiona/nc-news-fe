@@ -9,6 +9,7 @@ class Comments extends React.Component {
     comments: []
   };
   render(props) {
+    console.log(props);
     return (
       <>
         <CommentAdder
@@ -27,7 +28,11 @@ class Comments extends React.Component {
                   deleteComment={this.deleteComment}
                   loggedInUser={this.props.loggedInUser}
                 />
-                <Voter votes={comment.votes} id={comment.comment_id} />
+                <Voter
+                  votes={comment.votes}
+                  id={comment.comment_id}
+                  type="comments"
+                />
               </li>
             );
           })}
