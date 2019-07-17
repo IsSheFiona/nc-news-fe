@@ -11,6 +11,7 @@ function ErrorHandler(props) {
         </h1>
         <h3>Beep Beep Beep</h3>
         <h3>Does Not Compute.</h3>
+        <h3>01100110 01101001 01101111 01101110 01100001</h3>
         <h3>{props.err.response.data.msg}</h3>
         <h3>Status {props.err.response.status}</h3>
       </div>
