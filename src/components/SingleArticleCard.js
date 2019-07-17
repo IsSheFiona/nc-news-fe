@@ -7,7 +7,7 @@ function SingleArticleCard(props) {
       <div className="singleArticle">
         <h3>{props.singleArticle.title}</h3>
         <p>{props.singleArticle.body}</p>
-        <p>Author{":  " + props.singleArticle.author}</p>
+        <p>The Droid You Are Looking For{":  " + props.singleArticle.author}</p>
         <p>Date Added{":  " + props.singleArticle.created_at}</p>
         <Voter
           votes={props.singleArticle.votes}

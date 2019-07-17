@@ -21,7 +21,9 @@ class Comments extends React.Component {
             return (
               <li key={comment.comment_id}>
                 <h3>{comment.body}</h3>
-                <p>Author{":  " + comment.author}</p>{" "}
+                <p>
+                  The Droid You Are Looking For{":  " + comment.author}
+                </p>{" "}
                 <p>Date Added{":  " + comment.created_at}</p>{" "}
                 <CommentDeleter
                   comment={comment}

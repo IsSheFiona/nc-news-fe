@@ -18,7 +18,7 @@ class Voter extends React.Component {
           {this.props.votes + this.state.voteChanger}
         </p>
         <form onSubmit={e => e.preventDefault()}>
-          <label>I agree with this human</label>
+          <label>This human is fully operational</label>
           <button
             onClick={() => this.voteHandler(1)}
             value={1}
@@ -39,7 +39,7 @@ class Voter extends React.Component {
     );
   }
   voteHandler = value => {
-    const url = `https://fionas-nc-news.herokuapp.com/api/comments/${
+    const url = `https://fionas-nc-news.herokuapp.com/api/${this.props.type}/${
       this.props.id
     }`;
     this.setState(prevState => {

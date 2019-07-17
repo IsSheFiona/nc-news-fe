@@ -14,7 +14,7 @@ function ArticleList(props) {
               <Link to={`/topics/${article.topic}`}>
                 <h4>Topic{":  " + article.topic}</h4>
               </Link>
-              <p>Author{":  " + article.author}</p>{" "}
+              <p>The Droid You Are Looking For{":  " + article.author}</p>{" "}
               <p>Date Added{":  " + article.created_at}</p>{" "}
               <p>Comments{":  " + article.comment_count}</p>{" "}
               <p>Votes{":  " + article.votes}</p>

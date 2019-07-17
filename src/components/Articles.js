@@ -24,10 +24,10 @@ class Articles extends React.Component {
     );
   }
 
-  fetchArticles = ({ topic, sort_by }) => {
+  fetchArticles = ({ topic, sort_by, order }) => {
     const url = "https://fionas-nc-news.herokuapp.com/api/articles";
     axios
-      .get(url, { params: { topic: topic, sort_by: sort_by } })
+      .get(url, { params: { topic: topic, sort_by: sort_by, order: order } })
       .then(({ data }) => {
         this.setState({
           articles: data.articles,
