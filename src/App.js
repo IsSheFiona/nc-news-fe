@@ -7,6 +7,7 @@ import Articles from "./components/Articles";
 import Nav from "./components/Nav";
 import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
+import RouteError from "./components/RouteError";
 
 class App extends React.Component {
   state = {
@@ -31,6 +32,7 @@ class App extends React.Component {
             path="/articles/:article_id/comments"
             loggedInUser={this.state.loggedInUser}
           />
+          <RouteError path="/*" />
         </Router>
       </React.Fragment>
     );
