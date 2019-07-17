@@ -3,6 +3,7 @@ import axios from "axios";
 import ErrorHandler from "./ErrorHandler";
 import LoadingPage from "./LoadingPage";
 import SingleArticleCard from "./SingleArticleCard";
+import Comments from "./Comments";
 
 class SingleArticle extends React.Component {
   state = {
@@ -15,7 +16,12 @@ class SingleArticle extends React.Component {
       return <ErrorHandler err={this.state.err} />;
     }
     if (this.state.isLoading) return <LoadingPage />;
-    return <SingleArticleCard singleArticle={this.state.singleArticle} />;
+    return (
+      <React.Fragment>
+        <SingleArticleCard singleArticle={this.state.singleArticle} />
+        <Comments article_id={this.state.singleArticle.article_id} />
+      </React.Fragment>
+    );
   }
 
   fetchAnArticle = () => {

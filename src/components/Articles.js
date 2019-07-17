@@ -31,7 +31,8 @@ class Articles extends React.Component {
       .then(({ data }) => {
         this.setState({
           articles: data.articles,
-          isLoading: false
+          isLoading: false,
+          err: null
         });
       })
       .catch(err => {
