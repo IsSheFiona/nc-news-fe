@@ -30,7 +30,9 @@ class CommentAdder extends React.Component {
     e.preventDefault();
     const { body } = this.state;
     const { postAComment, loggedInUser } = this.props;
-    postAComment({ body, loggedInUser });
+    if (!this.state.body) {
+      return "you must submit a comment";
+    } else postAComment({ body, loggedInUser });
     this.setState({ body: "" });
   };
 }
