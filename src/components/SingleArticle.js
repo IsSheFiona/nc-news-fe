@@ -17,10 +17,13 @@ class SingleArticle extends React.Component {
     }
     if (this.state.isLoading) return <LoadingPage />;
     return (
-      <React.Fragment>
+      <>
         <SingleArticleCard singleArticle={this.state.singleArticle} />
-        <Comments article_id={this.state.singleArticle.article_id} />
-      </React.Fragment>
+        <Comments
+          article_id={this.state.singleArticle.article_id}
+          loggedInUser={this.props.loggedInUser}
+        />
+      </>
     );
   }
 
