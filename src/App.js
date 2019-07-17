@@ -15,7 +15,7 @@ class App extends React.Component {
   };
   render() {
     return (
-      <React.Fragment>
+      <>
         <header>
           <h2>
             nc newsbot...{"  "}
@@ -27,14 +27,17 @@ class App extends React.Component {
         <Router>
           <Articles path="/home" />
           <Articles path="topics/:topic" />
-          <SingleArticle path="/articles/:article_id" />
+          <SingleArticle
+            path="/articles/:article_id"
+            loggedInUser={this.state.loggedInUser}
+          />
           <Comments
             path="/articles/:article_id/comments"
             loggedInUser={this.state.loggedInUser}
           />
           <RouteError path="/*" />
         </Router>
-      </React.Fragment>
+      </>
     );
   }
 }
