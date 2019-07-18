@@ -11,7 +11,8 @@ class Articles extends React.Component {
     articles: [],
     isLoading: true,
     err: null,
-    p: 1
+    p: 1,
+    articleCount: 0
   };
   render() {
     console.log(this.state.p);
@@ -23,7 +24,11 @@ class Articles extends React.Component {
       <>
         <ArticleSorter fetchArticles={this.fetchArticles} />
         <ArticleList articles={this.state.articles} />
-        <PageTurner fetchArticles={this.fetchArticles} p={this.state.p} />
+        <PageTurner
+          fetchArticles={this.fetchArticles}
+          p={this.state.p}
+          articleCount={this.state.articleCount}
+        />
       </>
     );
   }
@@ -39,10 +44,12 @@ class Articles extends React.Component {
           articles: data.articles,
           isLoading: false,
           err: null,
-          p: p
+          p: p,
+          articleCount: data.articleCount[0].count
         });
       })
       .catch(err => {
+        console.log(err);
         this.setState({ err, isLoading: false });
       });
   };
