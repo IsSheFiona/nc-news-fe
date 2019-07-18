@@ -35,7 +35,7 @@ class App extends React.Component {
             path="/articles/:article_id/comments"
             loggedInUser={this.state.loggedInUser}
           />
-          <RouteError path="/*" />
+          <RouteError default />
         </Router>
       </>
     );
