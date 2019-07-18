@@ -14,6 +14,7 @@ class Articles extends React.Component {
     p: 1
   };
   render() {
+    console.log(this.state.p);
     if (this.state.err) {
       return <ErrorHandler err={this.state.err} />;
     }
@@ -27,7 +28,7 @@ class Articles extends React.Component {
     );
   }
 
-  fetchArticles = ({ topic, sort_by, order, p }) => {
+  fetchArticles = ({ topic, sort_by, order, p = 1 }) => {
     const url = "https://fionas-nc-news.herokuapp.com/api/articles";
     axios
       .get(url, {
@@ -38,7 +39,7 @@ class Articles extends React.Component {
           articles: data.articles,
           isLoading: false,
           err: null,
-          p: p + 1
+          p: p
         });
       })
       .catch(err => {
