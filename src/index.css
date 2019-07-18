@@ -13,23 +13,13 @@ code {
     monospace;
 }
 
-nav {
-  width: 95vw;
-  background-color: #ffefd5;
-  display: flex;
-  padding: 0;
-  margin: 0;
-  justify-content: space-around;
-  border-radius: 25px;
-  box-shadow: 5px 5px 2px #8b475d;
-}
-
 h2 {
   margin: 20px;
   color: #8b475d;
 }
 
-.articleSorter {
+.articleSorter,
+.pageTurner {
   display: flex;
   margin: 20px;
   justify-content: space-around;
@@ -45,54 +35,12 @@ a:visited {
   color: #8b475d;
 }
 
-li {
-  list-style-type: none;
-  margin-right: 40px;
-  border-radius: 25px;
-  padding: 10px;
-  margin-bottom: 10px;
-  box-shadow: 10px 10px 5px #8b475d;
-}
-
-li:nth-child(odd) {
-  background: #eecbad;
-}
-
-li:nth-child(even) {
-  background: #ffefd5;
-}
-
 select,
 .commentButton,
 .deleteButton,
-.addCommentButton {
+button {
   border-radius: 25px;
   background: #eecbad;
   border-color: #8b475d;
   box-shadow: 2px 2px 1px #8b475d;
-}
-
-.errorHandling,
-.loadingPage {
-  color: #8b475d;
-  text-align: center;
-  font-size: 3vw;
-}
-
-.addCommentForm {
-  height: 30px;
-  margin: 20px;
-}
-
-.addCommentInput {
-  border-radius: 25px;
-  box-shadow: 2px 2px 1px #8b475d;
-}
-
-.singleArticle {
-  background-color: #ffefd5;
-  border-radius: 25px;
-  padding: 10px;
-  margin: 20px;
-  box-shadow: 10px 10px 5px #8b475d;
 }

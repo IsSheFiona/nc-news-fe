@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./CommentAdder.module.css";
 
 class CommentAdder extends React.Component {
   state = {
@@ -7,15 +8,15 @@ class CommentAdder extends React.Component {
   render(props) {
     return (
       <>
-        <form onSubmit={this.handleSubmit} className="addCommentForm">
+        <form onSubmit={this.handleSubmit} className={styles.addCommentForm}>
           <input
             type="text"
             id="body"
             value={this.state.body}
             onChange={e => this.handleChange(e.target.value, "body")}
-            className="addCommentInput"
+            className={styles.addCommentInput}
           />
-          <button className="addCommentButton">
+          <button className={styles.addCommentButton}>
             Add Your Comment Puny Human
           </button>
         </form>

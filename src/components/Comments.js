@@ -9,7 +9,6 @@ class Comments extends React.Component {
     comments: []
   };
   render(props) {
-    console.log(props);
     return (
       <>
         <CommentAdder
@@ -22,9 +21,9 @@ class Comments extends React.Component {
               <li key={comment.comment_id}>
                 <h3>{comment.body}</h3>
                 <p>
-                  The Droid You Are Looking For{":  " + comment.author}
+                  The Droid You Are Looking For Is{":  " + comment.author}
                 </p>{" "}
-                <p>Date Added{":  " + comment.created_at}</p>{" "}
+                <p>Date AI-dded{":  " + comment.created_at}</p>{" "}
                 <CommentDeleter
                   comment={comment}
                   deleteComment={this.deleteComment}

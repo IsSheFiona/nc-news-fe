@@ -1,11 +1,12 @@
 import React from "react";
+import styles from "./ErrorAndLoading.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 
 function RouteError(props) {
   return (
-    <React.Fragment>
-      <div className="errorHandling">
+    <>
+      <div className={styles.errorHandling}>
         <h1>
           <FontAwesomeIcon icon={faRobot} />
         </h1>
@@ -19,7 +20,7 @@ function RouteError(props) {
           01100101 01100101 01101110
         </h3>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

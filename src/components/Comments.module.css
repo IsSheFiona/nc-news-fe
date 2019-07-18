@@ -1,0 +1,26 @@
+li {
+  list-style-type: none;
+  margin-right: 40px;
+  border-radius: 25px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 10px 10px 5px #8b475d;
+}
+
+li:nth-child(odd) {
+  background: #eecbad;
+}
+
+li:nth-child(even) {
+  background: #ffefd5;
+}
+
+.voteForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.voteButton {
+  width: 30px;
+}

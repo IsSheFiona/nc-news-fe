@@ -1,0 +1,16 @@
+.addCommentForm {
+  height: 30px;
+  margin: 20px;
+}
+
+.addCommentInput {
+  border-radius: 25px;
+  box-shadow: 2px 2px 1px #8b475d;
+}
+
+.addCommentButton {
+  border-radius: 25px;
+  background: #eecbad;
+  border-color: #8b475d;
+  box-shadow: 2px 2px 1px #8b475d;
+}

@@ -4,12 +4,14 @@ import ArticleSorter from "./ArticleSorter";
 import ErrorHandler from "./ErrorHandler";
 import LoadingPage from "./LoadingPage";
 import ArticleList from "./ArticleList";
+import PageTurner from "./PageTurner";
 
 class Articles extends React.Component {
   state = {
     articles: [],
     isLoading: true,
-    err: null
+    err: null,
+    p: 1
   };
   render() {
     if (this.state.err) {
@@ -17,22 +19,26 @@ class Articles extends React.Component {
     }
     if (this.state.isLoading) return <LoadingPage />;
     return (
-      <React.Fragment>
+      <>
         <ArticleSorter fetchArticles={this.fetchArticles} />
         <ArticleList articles={this.state.articles} />
-      </React.Fragment>
+        <PageTurner fetchArticles={this.fetchArticles} p={this.state.p} />
+      </>
     );
   }
 
-  fetchArticles = ({ topic, sort_by, order }) => {
+  fetchArticles = ({ topic, sort_by, order, p }) => {
     const url = "https://fionas-nc-news.herokuapp.com/api/articles";
     axios
-      .get(url, { params: { topic: topic, sort_by: sort_by, order: order } })
+      .get(url, {
+        params: { topic: topic, sort_by: sort_by, order: order, p: p }
+      })
       .then(({ data }) => {
         this.setState({
           articles: data.articles,
           isLoading: false,
-          err: null
+          err: null,
+          p: p + 1
         });
       })
       .catch(err => {
@@ -43,6 +49,9 @@ class Articles extends React.Component {
   componentDidMount() {
     if (this.props.topic) {
       this.fetchArticles({ topic: this.props.topic });
+    } else this.fetchArticles({});
+    if (this.state.p !== 1) {
+      this.fetchArticles({ p: this.state.p });
     } else this.fetchArticles({});
   }
 

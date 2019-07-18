@@ -1,11 +1,12 @@
 import React from "react";
+import styles from "./ErrorAndLoading.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 
 function ErrorHandler(props) {
   return (
-    <React.Fragment>
-      <div className="errorHandling">
+    <>
+      <div className={styles.errorHandling}>
         <h1>
           <FontAwesomeIcon icon={faRobot} />
         </h1>
@@ -19,7 +20,7 @@ function ErrorHandler(props) {
         <h3>{props.err.response.data.msg}</h3>
         <h3>Status {props.err.response.status}</h3>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

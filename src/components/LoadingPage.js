@@ -1,11 +1,12 @@
 import React from "react";
+import styles from "./ErrorAndLoading.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 
 function LoadingPage() {
   return (
-    <React.Fragment>
-      <div className="loadingPage">
+    <>
+      <div className={styles.loadingPage}>
         <h1>
           <FontAwesomeIcon icon={faRobot} />
         </h1>
@@ -18,7 +19,7 @@ function LoadingPage() {
         <h3>Please be patient...</h3>
         <h3>Your page is loading...</h3>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

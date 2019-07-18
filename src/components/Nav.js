@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import styles from "./Nav.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCode,
@@ -10,8 +11,8 @@ import {
 
 function Nav() {
   return (
-    <React.Fragment>
-      <nav>
+    <>
+      <nav className={styles.navBar}>
         <Link to="/home">
           <h3>
             Home {"  "}
@@ -35,7 +36,7 @@ function Nav() {
           </h3>
         </Link>
       </nav>
-    </React.Fragment>
+    </>
   );
 }
 

@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "@reach/router";
+import styles from "./Articles.module.css";
 
 function ArticleList(props) {
   return (
-    <React.Fragment>
+    <>
       <ul>
         {props.articles.map(article => {
           return (
@@ -14,15 +15,15 @@ function ArticleList(props) {
               <Link to={`/topics/${article.topic}`}>
                 <h4>Topic{":  " + article.topic}</h4>
               </Link>
-              <p>The Droid You Are Looking For{":  " + article.author}</p>{" "}
-              <p>Date Added{":  " + article.created_at}</p>{" "}
-              <p>Comments{":  " + article.comment_count}</p>{" "}
-              <p>Votes{":  " + article.votes}</p>
+              <p>The Droid You Are Looking For Is{":  " + article.author}</p>{" "}
+              <p>Date AI-dded{":  " + article.created_at}</p>{" "}
+              <p>Human interactions{":  " + article.comment_count}</p>{" "}
+              <p>Human approval level{":  " + article.votes}</p>
             </li>
           );
         })}
       </ul>
-    </React.Fragment>
+    </>
   );
 }
 

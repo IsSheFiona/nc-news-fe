@@ -5,6 +5,7 @@ import {
   faPlusCircle
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import styles from "./Voter.module.css";
 
 class Voter extends React.Component {
   state = {
@@ -14,15 +15,16 @@ class Voter extends React.Component {
     return (
       <>
         <p>
-          Votes{":  "}
+          Human approval level{":  "}
           {this.props.votes + this.state.voteChanger}
         </p>
-        <form onSubmit={e => e.preventDefault()}>
+        <form onSubmit={e => e.preventDefault()} className={styles.voteForm}>
           <label>This human is fully operational</label>
           <button
             onClick={() => this.voteHandler(1)}
             value={1}
             disabled={this.state.voteChanger}
+            className={styles.voteButton}
           >
             <FontAwesomeIcon icon={faPlusCircle} />
           </button>
@@ -31,6 +33,7 @@ class Voter extends React.Component {
             onClick={() => this.voteHandler(-1)}
             value={-1}
             disabled={this.state.voteChanger}
+            className={styles.voteButton}
           >
             <FontAwesomeIcon icon={faExclamationTriangle} />
           </button>
