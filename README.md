@@ -9,9 +9,9 @@ The articles can be sorted by a field of your choice and you are able change the
 Clicking on a particular article will allow you to read its content, and as a logged in user you can vote it up or down.  
 You can also add a comment and vote other comments up or down. If you find you want to delete your own comments, you can do that too. The current default logged in user is 'grumpy19', so go ahead and add or delete on their behalf.
 
-You should find that the project is responsive when viewed with a device of your choice.
-
 If you try to access a page that does not exist or have issues with a slow connection, look out for some secret messages from our robot overlords.
+
+You should find that the project is responsive when viewed with a device of your choice.
 
 _Running locally_
 
@@ -24,7 +24,7 @@ And to be sure you can view the super cool robot content you'll need to run
 
 _Location_
 
-This site can be found at:
+This site can be found at: https://ncnewsbot.netlify.com/home
 
 The backend data is hosted at: https://fionas-nc-news.herokuapp.com/api  
 And you can find its repository at: https://github.com/IsSheFiona/nc-news
