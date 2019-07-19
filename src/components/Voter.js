@@ -12,18 +12,19 @@ class Voter extends React.Component {
     voteChanger: 0
   };
   render() {
+    const { voteChanger } = this.state;
     return (
       <>
         <p>
           Human approval level{":  "}
-          {this.props.votes + this.state.voteChanger}
+          {this.props.votes + voteChanger}
         </p>
         <form onSubmit={e => e.preventDefault()} className={styles.voteForm}>
           <label>This human is fully operational</label>
           <button
             onClick={() => this.voteHandler(1)}
             value={1}
-            disabled={this.state.voteChanger}
+            disabled={voteChanger}
             className={styles.voteButton}
           >
             <FontAwesomeIcon icon={faPlusCircle} />
@@ -32,7 +33,7 @@ class Voter extends React.Component {
           <button
             onClick={() => this.voteHandler(-1)}
             value={-1}
-            disabled={this.state.voteChanger}
+            disabled={voteChanger}
             className={styles.voteButton}
           >
             <FontAwesomeIcon icon={faExclamationTriangle} />
@@ -42,10 +43,11 @@ class Voter extends React.Component {
     );
   }
   voteHandler = value => {
+    const { type, id } = this.props;
     this.setState(prevState => {
       return { voteChanger: prevState.voteChanger + value };
     });
-    vote(this.props.type, this.props.id).catch(err => {
+    vote(type, id).catch(err => {
       this.setState({ err });
     });
   };

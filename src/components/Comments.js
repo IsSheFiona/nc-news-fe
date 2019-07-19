@@ -11,7 +11,8 @@ class Comments extends React.Component {
     isLoading: true
   };
   render(props) {
-    if (this.state.isLoading) return <LoadingPage />;
+    const { comments, isLoading } = this.state;
+    if (isLoading) return <LoadingPage />;
     return (
       <>
         <CommentAdder
@@ -19,7 +20,7 @@ class Comments extends React.Component {
           postAComment={this.postAComment}
         />
         <ul>
-          {this.state.comments.map(comment => {
+          {comments.map(comment => {
             return (
               <li key={comment.comment_id}>
                 <h3>{comment.body}</h3>

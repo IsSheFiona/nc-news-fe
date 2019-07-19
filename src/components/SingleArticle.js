@@ -12,21 +12,21 @@ class SingleArticle extends React.Component {
     err: null
   };
   render() {
-    if (this.state.err) {
-      console.log(this.state.err);
+    const { err, isLoading, singleArticle } = this.state;
+    if (err) {
       return (
         <ErrorHandler
-          msg={this.state.err.response.data.msg}
-          status={this.state.err.response.status}
+          msg={err.response.data.msg}
+          status={err.response.status}
         />
       );
     }
-    if (this.state.isLoading) return <LoadingPage />;
+    if (isLoading) return <LoadingPage />;
     return (
       <>
-        <SingleArticleCard singleArticle={this.state.singleArticle} />
+        <SingleArticleCard singleArticle={singleArticle} />
         <Comments
-          article_id={this.state.singleArticle.article_id}
+          article_id={singleArticle.article_id}
           loggedInUser={this.props.loggedInUser}
         />
       </>

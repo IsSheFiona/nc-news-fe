@@ -15,30 +15,31 @@ class Articles extends React.Component {
     articleCount: 0
   };
   render() {
-    if (this.state.err) {
+    const { err, isLoading, articles, articleCount, p } = this.state;
+    if (err) {
       return (
         <ErrorHandler
-          msg={this.state.err.response.data.msg}
-          status={this.state.err.response.status}
+          msg={err.response.data.msg}
+          status={err.response.status}
         />
       );
     }
-    if (this.state.isLoading) return <LoadingPage />;
+    if (isLoading) return <LoadingPage />;
     return (
       <>
         <ArticleSorter fetchArticles={this.fetchArticles} />
-        <ArticleList articles={this.state.articles} />
+        <ArticleList articles={articles} />
         <PageTurner
           fetchArticles={this.fetchArticles}
-          p={this.state.p}
-          articleCount={this.state.articleCount}
+          p={p}
+          articleCount={articleCount}
         />
       </>
     );
   }
 
   fetchArticles = ({ topic, sort_by, order, p = 1 }) => {
-    getArticles(topic, sort_by, order, (p = 1))
+    getArticles(topic, sort_by, order, p)
       .then(({ data }) => {
         this.setState({
           articles: data.articles,

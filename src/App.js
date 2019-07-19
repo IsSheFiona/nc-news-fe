@@ -14,6 +14,7 @@ class App extends React.Component {
     loggedInUser: "grumpy19"
   };
   render() {
+    const { loggedInUser } = this.state;
     return (
       <>
         <header className={styles.headerText}>
@@ -23,7 +24,7 @@ class App extends React.Component {
               <FontAwesomeIcon icon={faRobot} />
             </h2>
           </Link>
-          <h4>Logged in as the droid known as {this.state.loggedInUser}</h4>
+          <h4>Logged in as the droid known as {loggedInUser}</h4>
         </header>
         <Nav />
 
@@ -33,11 +34,11 @@ class App extends React.Component {
           <Articles path="topics/:topic" />
           <SingleArticle
             path="/articles/:article_id"
-            loggedInUser={this.state.loggedInUser}
+            loggedInUser={loggedInUser}
           />
           <Comments
             path="/articles/:article_id/comments"
-            loggedInUser={this.state.loggedInUser}
+            loggedInUser={loggedInUser}
           />
           <ErrorHandler msg="That page does not exist." default />
         </Router>
