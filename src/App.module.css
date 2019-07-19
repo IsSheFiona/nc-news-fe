@@ -1,0 +1,10 @@
+.content {
+  background: #ffdab9;
+}
+
+.headerText {
+  color: #8b475d;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+}
