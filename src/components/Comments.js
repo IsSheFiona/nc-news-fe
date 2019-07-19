@@ -3,12 +3,15 @@ import axios from "axios";
 import CommentAdder from "./CommentAdder";
 import CommentDeleter from "./CommentDeleter";
 import Voter from "./Voter";
+import LoadingPage from "./LoadingPage";
 
 class Comments extends React.Component {
   state = {
-    comments: []
+    comments: [],
+    isLoading: true
   };
   render(props) {
+    if (this.state.isLoading) return <LoadingPage />;
     return (
       <>
         <CommentAdder
@@ -51,11 +54,12 @@ class Comments extends React.Component {
       .get(url)
       .then(({ data }) => {
         this.setState({
-          comments: data.comments
+          comments: data.comments,
+          isLoading: false
         });
       })
       .catch(err => {
-        this.setState({ err });
+        this.setState({ err, isLoading: false });
       });
   };
 
@@ -71,7 +75,7 @@ class Comments extends React.Component {
         });
       })
       .catch(err => {
-        this.setState({ err });
+        this.setState({ err, isLoading: false });
       });
   };
 
@@ -90,7 +94,7 @@ class Comments extends React.Component {
         })
       )
       .catch(err => {
-        this.setState({ err });
+        this.setState({ err, isLoading: false });
       });
   };
 
