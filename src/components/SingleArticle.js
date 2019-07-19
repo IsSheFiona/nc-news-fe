@@ -28,6 +28,8 @@ class SingleArticle extends React.Component {
         <Comments
           article_id={singleArticle.article_id}
           loggedInUser={this.props.loggedInUser}
+          comment_count={singleArticle.comment_count}
+          incrementCommentCount={this.incrementCommentCount}
         />
       </>
     );
@@ -44,6 +46,15 @@ class SingleArticle extends React.Component {
       .catch(err => {
         this.setState({ err, isLoading: false });
       });
+  };
+
+  incrementCommentCount = increment => {
+    this.setState(prevState => ({
+      singleArticle: {
+        ...prevState.singleArticle,
+        comment_count: +prevState.singleArticle.comment_count + increment
+      }
+    }));
   };
 
   componentDidMount() {
