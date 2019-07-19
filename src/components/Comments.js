@@ -1,9 +1,9 @@
 import React from "react";
 import CommentAdder from "./CommentAdder";
-import CommentDeleter from "./CommentDeleter";
-import Voter from "./Voter";
+
 import LoadingPage from "./LoadingPage";
 import { getComments, addComment, removeComment } from "../api";
+import CommentsList from "./CommentsList";
 
 class Comments extends React.Component {
   state = {
@@ -19,29 +19,11 @@ class Comments extends React.Component {
           loggedInUser={this.props.loggedInUser}
           postAComment={this.postAComment}
         />
-        <ul>
-          {comments.map(comment => {
-            return (
-              <li key={comment.comment_id}>
-                <h3>{comment.body}</h3>
-                <p>
-                  The Droid You Are Looking For Is{":  " + comment.author}
-                </p>{" "}
-                <p>Date AI-dded{":  " + comment.created_at}</p>{" "}
-                <CommentDeleter
-                  comment={comment}
-                  deleteComment={this.deleteComment}
-                  loggedInUser={this.props.loggedInUser}
-                />
-                <Voter
-                  votes={comment.votes}
-                  id={comment.comment_id}
-                  type="comments"
-                />
-              </li>
-            );
-          })}
-        </ul>
+        <CommentsList
+          comments={comments}
+          loggedInUser={this.props.loggedInUser}
+          deleteComment={this.deleteComment}
+        />
       </>
     );
   }
