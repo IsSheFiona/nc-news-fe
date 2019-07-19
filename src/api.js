@@ -18,7 +18,7 @@ export function addComment(body, loggedInUser, article_id) {
   return axios.post(url, { body, username: loggedInUser });
 }
 
-export function removeComment(comment_id) {
+export function removeComment(comment, comment_id) {
   const url = `https://fionas-nc-news.herokuapp.com/api/comments/${comment_id}`;
   return axios.delete(url);
 }
