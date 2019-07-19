@@ -15,6 +15,7 @@ class CommentAdder extends React.Component {
             value={this.state.body}
             onChange={e => this.handleChange(e.target.value, "body")}
             className={styles.addCommentInput}
+            required
           />
           <button className={styles.addCommentButton}>
             Add Your Comment Puny Human
@@ -31,9 +32,7 @@ class CommentAdder extends React.Component {
     e.preventDefault();
     const { body } = this.state;
     const { postAComment, loggedInUser } = this.props;
-    if (!this.state.body) {
-      this.setState("you must submit a comment");
-    } else postAComment({ body, loggedInUser });
+    postAComment({ body, loggedInUser });
     this.setState({ body: "" });
   };
 }
