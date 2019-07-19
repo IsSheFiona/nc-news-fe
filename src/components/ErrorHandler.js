@@ -17,8 +17,8 @@ function ErrorHandler(props) {
           01110011 00100000 01110100 01101000 01100101 00100000 01100010
           01100101 01110011 01110100
         </h3>
-        <h3>{props.err.response.data.msg}</h3>
-        <h3>Status {props.err.response.status}</h3>
+        <h3>{props.msg}</h3>
+        <h3>Status {props.status}</h3>
       </div>
     </>
   );

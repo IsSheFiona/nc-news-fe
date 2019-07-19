@@ -13,7 +13,13 @@ class SingleArticle extends React.Component {
   };
   render() {
     if (this.state.err) {
-      return <ErrorHandler err={this.state.err} />;
+      console.log(this.state.err);
+      return (
+        <ErrorHandler
+          msg={this.state.err.response.data.msg}
+          status={this.state.err.response.status}
+        />
+      );
     }
     if (this.state.isLoading) return <LoadingPage />;
     return (

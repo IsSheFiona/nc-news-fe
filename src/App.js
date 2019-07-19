@@ -2,12 +2,12 @@ import React from "react";
 import { Router } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
+import styles from "./App.module.css";
 import Articles from "./components/Articles";
-//import "./App.css";
 import Nav from "./components/Nav";
 import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
-import RouteError from "./components/RouteError";
+import ErrorHandler from "./components/ErrorHandler";
 
 class App extends React.Component {
   state = {
@@ -16,15 +16,17 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <header>
+        <header className={styles.headerText}>
           <h2>
             nc newsbot...{"  "}
             <FontAwesomeIcon icon={faRobot} />
           </h2>
-          <Nav />
+          <h4>Logged in as the droid known as {this.state.loggedInUser}</h4>
         </header>
+        <Nav />
 
         <Router>
+          <Articles path="/" />
           <Articles path="/home" />
           <Articles path="topics/:topic" />
           <SingleArticle
@@ -35,7 +37,7 @@ class App extends React.Component {
             path="/articles/:article_id/comments"
             loggedInUser={this.state.loggedInUser}
           />
-          <RouteError default />
+          <ErrorHandler msg="That page does not exist." default />
         </Router>
       </>
     );
