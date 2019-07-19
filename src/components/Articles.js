@@ -15,9 +15,13 @@ class Articles extends React.Component {
     articleCount: 0
   };
   render() {
-    console.log(this.state.p);
     if (this.state.err) {
-      return <ErrorHandler err={this.state.err} />;
+      return (
+        <ErrorHandler
+          msg={this.state.err.response.data.msg}
+          status={this.state.err.response.status}
+        />
+      );
     }
     if (this.state.isLoading) return <LoadingPage />;
     return (
