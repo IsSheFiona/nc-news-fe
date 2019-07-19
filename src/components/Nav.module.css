@@ -8,3 +8,14 @@
   border-radius: 25px;
   box-shadow: 5px 5px 2px #8b475d;
 }
+
+@media only screen and (max-width: 500px) {
+  .navBar {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .navBar {
+    font-size: 12px;
+  }
+}
