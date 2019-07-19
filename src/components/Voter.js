@@ -4,8 +4,8 @@ import {
   faExclamationTriangle,
   faPlusCircle
 } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import styles from "./Voter.module.css";
+import { vote } from "../api";
 
 class Voter extends React.Component {
   state = {
@@ -42,13 +42,10 @@ class Voter extends React.Component {
     );
   }
   voteHandler = value => {
-    const url = `https://fionas-nc-news.herokuapp.com/api/${this.props.type}/${
-      this.props.id
-    }`;
     this.setState(prevState => {
       return { voteChanger: prevState.voteChanger + value };
     });
-    axios.patch(url, { inc_votes: value }).catch(err => {
+    vote(this.props.type, this.props.id).catch(err => {
       this.setState({ err });
     });
   };

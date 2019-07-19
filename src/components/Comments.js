@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
 import CommentAdder from "./CommentAdder";
 import CommentDeleter from "./CommentDeleter";
 import Voter from "./Voter";
 import LoadingPage from "./LoadingPage";
+import { getComments, addComment, removeComment } from "../api";
 
 class Comments extends React.Component {
   state = {
@@ -46,12 +46,7 @@ class Comments extends React.Component {
   }
 
   fetchComments = () => {
-    const url = `https://fionas-nc-news.herokuapp.com/api/articles/${
-      this.props.article_id
-    }/comments`;
-
-    axios
-      .get(url)
+    getComments(this.props.article_id)
       .then(({ data }) => {
         this.setState({
           comments: data.comments,
@@ -64,11 +59,7 @@ class Comments extends React.Component {
   };
 
   postAComment = ({ body, loggedInUser }) => {
-    const url = `https://fionas-nc-news.herokuapp.com/api/articles/${
-      this.props.article_id
-    }/comments`;
-    axios
-      .post(url, { body, username: loggedInUser })
+    addComment(body, loggedInUser, this.props.article_id)
       .then(response => {
         this.setState(prevState => {
           return { comments: [response.data.comment, ...prevState.comments] };
@@ -80,12 +71,8 @@ class Comments extends React.Component {
   };
 
   deleteComment = comment => {
-    const url = `https://fionas-nc-news.herokuapp.com/api/comments/${
-      comment.comment_id
-    }`;
     let commentId = comment.comment_id;
-    axios
-      .delete(url)
+    removeComment(comment, comment.comment_id)
       .then(
         this.setState({
           comments: this.state.comments.filter(comment => {

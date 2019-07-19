@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
 import ErrorHandler from "./ErrorHandler";
 import LoadingPage from "./LoadingPage";
 import SingleArticleCard from "./SingleArticleCard";
 import Comments from "./Comments";
+import { getAnArticle } from "../api";
 
 class SingleArticle extends React.Component {
   state = {
@@ -34,11 +34,7 @@ class SingleArticle extends React.Component {
   }
 
   fetchAnArticle = () => {
-    const url = `https://fionas-nc-news.herokuapp.com/api/articles/${
-      this.props.article_id
-    }`;
-    axios
-      .get(url)
+    getAnArticle(this.props.article_id)
       .then(({ data }) => {
         this.setState({
           singleArticle: data.article,

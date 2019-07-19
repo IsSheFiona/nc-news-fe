@@ -1,10 +1,10 @@
 import React from "react";
-import axios from "axios";
 import ArticleSorter from "./ArticleSorter";
 import ErrorHandler from "./ErrorHandler";
 import LoadingPage from "./LoadingPage";
 import ArticleList from "./ArticleList";
 import PageTurner from "./PageTurner";
+import { getArticles } from "../api";
 
 class Articles extends React.Component {
   state = {
@@ -38,11 +38,7 @@ class Articles extends React.Component {
   }
 
   fetchArticles = ({ topic, sort_by, order, p = 1 }) => {
-    const url = "https://fionas-nc-news.herokuapp.com/api/articles";
-    axios
-      .get(url, {
-        params: { topic: topic, sort_by: sort_by, order: order, p: p }
-      })
+    getArticles(topic, sort_by, order, (p = 1))
       .then(({ data }) => {
         this.setState({
           articles: data.articles,
@@ -53,7 +49,6 @@ class Articles extends React.Component {
         });
       })
       .catch(err => {
-        console.log(err);
         this.setState({ err, isLoading: false });
       });
   };
