@@ -1,5 +1,5 @@
 import React from "react";
-import { Router } from "@reach/router";
+import { Router, Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 import styles from "./App.module.css";
@@ -17,10 +17,12 @@ class App extends React.Component {
     return (
       <>
         <header className={styles.headerText}>
-          <h2>
-            nc newsbot...{"  "}
-            <FontAwesomeIcon icon={faRobot} />
-          </h2>
+          <Link to="/home">
+            <h2>
+              nc newsbot...{"  "}
+              <FontAwesomeIcon icon={faRobot} />
+            </h2>
+          </Link>
           <h4>Logged in as the droid known as {this.state.loggedInUser}</h4>
         </header>
         <Nav />
