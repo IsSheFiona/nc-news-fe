@@ -1,8 +1,6 @@
 import axios from "axios";
 
-${ url } /articles
-
-const url = "https://fionas-nc-news.herokuapp.com/api"
+const url = "https://fionas-nc-news.herokuapp.com/api";
 
 export function getArticles(topic, sort_by, order, p = 1) {
   return axios.get(`${url}/articles`, {
@@ -15,7 +13,10 @@ export function getComments(article_id) {
 }
 
 export function addComment(body, loggedInUser, article_id) {
-  return axios.post(`${url}/articles/${article_id}/comments`, { body, username: loggedInUser });
+  return axios.post(`${url}/articles/${article_id}/comments`, {
+    body,
+    username: loggedInUser
+  });
 }
 
 export function removeComment(comment, comment_id) {
