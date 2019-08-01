@@ -25,15 +25,11 @@ class PageTurner extends React.Component {
   }
   disableNext = () => {
     const { articleCount, p } = this.props;
-    if (articleCount > p * 10) {
-      return false;
-    } else return true;
+    return !(articleCount > p * 10);
   };
 
   disablePrevious = () => {
-    if (this.props.p === 1) {
-      return true;
-    } else return false;
+    return this.props.p === 1;
   };
 }
 
